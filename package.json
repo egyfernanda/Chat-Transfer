@@ -1,0 +1,25 @@
+{
+  "name": "chat-file-transfer-app",
+  "version": "1.0.0",
+  "description": "Aplikasi Chat dan File Transfer berbasis Client-Server menggunakan Node.js dan Socket.io (WebSocket)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "chat",
+    "file-transfer",
+    "websocket",
+    "socket.io",
+    "client-server"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.8.3",
+    "nodemailer": "^6.9.14",
+    "dotenv": "^16.4.5"
+  }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat & File Transfer App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== MODAL LOGIN: EMAIL -> VERIFIKASI OTP -> USERNAME ===== -->
+  <div id="login-overlay">
+    <div class="login-box">
+      <h2>Masuk ke Chat Room</h2>
+
+      <!-- Step 1: Input email -->
+      <div id="step-email">
+        <p class="step-desc">Masukkan email kamu untuk menerima kode OTP verifikasi.</p>
+        <input type="email" id="email-input" placeholder="nama@email.com" autocomplete="email" />
+        <button id="send-otp-btn">Kirim Kode OTP</button>
+      </div>
+
+      <!-- Step 2: Verifikasi kode OTP -->
+      <div id="step-otp" class="hidden">
+        <p class="step-desc" id="otp-info-text"></p>
+        <input type="text" id="otp-input" placeholder="Masukkan 6 digit kode OTP" maxlength="6" inputmode="numeric" autocomplete="one-time-code" />
+        <button id="verify-otp-btn">Verifikasi</button>
+        <button id="resend-otp-btn" class="secondary-btn">Kirim Ulang Kode</button>
+        <button id="back-to-email-btn" class="link-btn">Ganti Email</button>
+      </div>
+
+      <!-- Step 3: Input username (setelah email terverifikasi) -->
+      <div id="step-username" class="hidden">
+        <p class="step-desc">Email terverifikasi ✅ Sekarang masukkan nama tampilan kamu.</p>
+        <input type="text" id="username-input" placeholder="Masukkan nama kamu..." maxlength="20" />
+        <button id="join-btn">Gabung</button>
+      </div>
+
+      <p id="login-error" class="error-text"></p>
+    </div>
+  </div>
+
+  <!-- ===== TAMPILAN UTAMA APLIKASI ===== -->
+  <div id="app" class="hidden">
+    <aside class="sidebar">
+      <h3>🟢 User Online</h3>
+      <ul id="user-list"></ul>
+      <div class="server-status" id="connection-status">Menghubungkan...</div>
+    </aside>
+
+    <main class="chat-area">
+      <header class="chat-header">
+        <h2>💬 Chat & File Transfer</h2>
+      </header>
+
+      <div id="messages" class="messages"></div>
+
+      <div id="upload-progress-wrap" class="hidden">
+        <div id="upload-progress-bar"></div>
+        <span id="upload-progress-text">Mengirim file... 0%</span>
+      </div>
+
+      <footer class="chat-footer">
+        <input type="file" id="file-input" hidden />
+        <button id="attach-btn" title="Kirim file">📎</button>
+        <input type="text" id="message-input" placeholder="Tulis pesan..." autocomplete="off" />
+        <button id="send-btn">Kirim</button>
+      </footer>
+    </main>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
